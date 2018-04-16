@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginRight: 3,
   },
   dotContainer: {
-    height: 60,
+    height: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
