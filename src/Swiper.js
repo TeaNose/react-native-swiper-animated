@@ -540,8 +540,9 @@ export default class SwiperAnimated extends PureComponent {
       let scaleX = 1;
       let opacity = 1;
       const scaleY = 1;
-
-      if (i === 0 && count > stackDepth) {
+      
+//        && count > stackDepth
+      if (i === 0) {
         /* ===============================================================================
          last card!
          hide it behind the others at first, show it after transforms
