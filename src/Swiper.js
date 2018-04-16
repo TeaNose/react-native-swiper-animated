@@ -541,27 +541,26 @@ export default class SwiperAnimated extends PureComponent {
       let opacity = 1;
       const scaleY = 1;
 
-//       if (i === 0 && count > stackDepth) {
-//         /* ===============================================================================
-//          last card!
-//          hide it behind the others at first, show it after transforms
-//          dont hide if there are not enough cards anymore
-//          =============================================================================== */
-//         // to hide the card, set the offsetY the samle value as the card above / before
-//         const lastOffsetY = this.calcOffsetY(count - 2, offsetY);
-//         translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
-//           inputRange: [-120, 0, 120],
-//           outputRange: [cardOffsetYEnd, lastOffsetY, cardOffsetYEnd],
-//           extrapolate: 'clamp',
-//         });
-//         scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
-//           inputRange: [-120, 0, 120],
-//           outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
-//           extrapolate: 'clamp',
-//         });
-//         opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.8, 1] });
-//       } else 
-       if (i === count - 1) {
+      if (i === 0 && count > stackDepth) {
+        /* ===============================================================================
+         last card!
+         hide it behind the others at first, show it after transforms
+         dont hide if there are not enough cards anymore
+         =============================================================================== */
+        // to hide the card, set the offsetY the samle value as the card above / before
+        const lastOffsetY = this.calcOffsetY(count - 2, offsetY);
+        translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
+          inputRange: [-120, 0, 120],
+          outputRange: [cardOffsetYEnd, lastOffsetY, cardOffsetYEnd],
+          extrapolate: 'clamp',
+        });
+        scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
+          inputRange: [-120, 0, 120],
+          outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
+          extrapolate: 'clamp',
+        });
+        opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.8, 1] });
+      } else if (i === count - 1) {
         /* ===============================================================================
          first card!
          add panHandlers and other transforms
