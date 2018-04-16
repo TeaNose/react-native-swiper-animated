@@ -542,57 +542,57 @@ export default class SwiperAnimated extends PureComponent {
       const scaleY = 1;
       
 //        && count > stackDepth
-      if (i === 0 && count > stackDepth) {
-        /* ===============================================================================
-         last card!
-         hide it behind the others at first, show it after transforms
-         dont hide if there are not enough cards anymore
-         =============================================================================== */
-        // to hide the card, set the offsetY the samle value as the card above / before
-        const lastOffsetY = this.calcOffsetY(count - 2, offsetY);
-        translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
-          inputRange: [-120, 0, 120],
-          outputRange: [cardOffsetYEnd, lastOffsetY, cardOffsetYEnd],
-          extrapolate: 'clamp',
-        });
-        scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
-          inputRange: [-120, 0, 120],
-          outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
-          extrapolate: 'clamp',
-        });
-        opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.8, 1] });
-      } else if (i === count - 1) {
-        /* ===============================================================================
-         first card!
-         add panHandlers and other transforms
-         =============================================================================== */
-        rotate = this.pan.x.interpolate({ inputRange: [-400, 0, 400], outputRange: ['-8deg', '0deg', '8deg'] });
-        translateY = this.pan.y;
-        translateX = this.pan.x;
-        panHandlers = swiper && children.length - 1 !== this.currentIndex[this.guid] ?
-          this.panResponder.panHandlers : {};
-        if (this.pan.y === 0 && this.pan.x === 0) {
-          translateY = this.enter.interpolate({ inputRange: [0.5, 1], outputRange: [5, 50] });
-        }
-      } else {
-        /* ===============================================================================
-         cards between first and last!
-         =============================================================================== */
-        translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
-          inputRange: [-120, 0, 120],
-          outputRange: [cardOffsetYEnd, cardOffsetY, cardOffsetYEnd],
-          extrapolate: 'clamp',
-        });
-        scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
-          inputRange: [-120, 0, 120],
-          outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
-          extrapolate: 'clamp',
-        });
-        opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.9, 1] });
-        if (this.pan.y === 0) {
-          translateY = this.enter.interpolate({ inputRange: [0.5, 1], outputRange: [0, 30] });
-        }
-      }
+//       if (i === 0 && count > stackDepth) {
+//         /* ===============================================================================
+//          last card!
+//          hide it behind the others at first, show it after transforms
+//          dont hide if there are not enough cards anymore
+//          =============================================================================== */
+//         // to hide the card, set the offsetY the samle value as the card above / before
+//         const lastOffsetY = this.calcOffsetY(count - 2, offsetY);
+//         translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
+//           inputRange: [-120, 0, 120],
+//           outputRange: [cardOffsetYEnd, lastOffsetY, cardOffsetYEnd],
+//           extrapolate: 'clamp',
+//         });
+//         scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
+//           inputRange: [-120, 0, 120],
+//           outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
+//           extrapolate: 'clamp',
+//         });
+//         opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.8, 1] });
+//       } else if (i === count - 1) {
+//         /* ===============================================================================
+//          first card!
+//          add panHandlers and other transforms
+//          =============================================================================== */
+//         rotate = this.pan.x.interpolate({ inputRange: [-400, 0, 400], outputRange: ['-8deg', '0deg', '8deg'] });
+//         translateY = this.pan.y;
+//         translateX = this.pan.x;
+//         panHandlers = swiper && children.length - 1 !== this.currentIndex[this.guid] ?
+//           this.panResponder.panHandlers : {};
+//         if (this.pan.y === 0 && this.pan.x === 0) {
+//           translateY = this.enter.interpolate({ inputRange: [0.5, 1], outputRange: [5, 50] });
+//         }
+//       } else {
+//         /* ===============================================================================
+//          cards between first and last!
+//          =============================================================================== */
+//         translateY = Animated.add(this.pan.y, this.pan.x).interpolate({
+//           inputRange: [-120, 0, 120],
+//           outputRange: [cardOffsetYEnd, cardOffsetY, cardOffsetYEnd],
+//           extrapolate: 'clamp',
+//         });
+//         scaleX = Animated.add(this.pan.y, this.pan.x).interpolate({
+//           inputRange: [-120, 0, 120],
+//           outputRange: [cardScaleEnd, cardScaleX, cardScaleEnd],
+//           extrapolate: 'clamp',
+//         });
+//         opacity = this.enter.interpolate({ inputRange: [0.6, 1], outputRange: [0.9, 1] });
+//         if (this.pan.y === 0) {
+//           translateY = this.enter.interpolate({ inputRange: [0.5, 1], outputRange: [0, 30] });
+//         }
+//       }
 
       const animatedCardStyles = {
         position: 'absolute',
