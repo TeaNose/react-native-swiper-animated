@@ -523,7 +523,7 @@ export default class SwiperAnimated extends PureComponent {
       .slice(this.currentIndex[this.guid], this.currentIndex[this.guid] + stackDepth)
       .reverse();
 
-    const count = reversedCards.length;
+    const count = React.Children.count(this.props.children);
 
     const cardStack = reversedCards.map((card, i) => {
       // calculate transforms depending on the card index (reversed style)
